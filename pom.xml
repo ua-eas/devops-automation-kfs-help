@@ -85,7 +85,7 @@
                         <masterBranchName>ua-master</masterBranchName>
                     </flowInitContext>
                     <allowSnapshots>true</allowSnapshots>
-                    <defaultOriginUrl>scm:git:git@github.com:ua-eas/kfs-help.git</defaultOriginUrl>
+                    <defaultOriginUrl>scm:git:git@github.com:ua-eas/devops-automation-kfs-help.git</defaultOriginUrl>
                     <enableSshAgent>true</enableSshAgent>
                 </configuration>
             </plugin>
