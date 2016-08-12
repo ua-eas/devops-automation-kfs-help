@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   The Kuali Financial System, a comprehensive financial management system for higher education.
+   
+   Copyright 2005-2014 The Kuali Foundation
+   
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU Affero General Public License as
+   published by the Free Software Foundation, either version 3 of the
+   License, or (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Affero General Public License for more details.
+   
+   You should have received a copy of the GNU Affero General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.kuali.pom</groupId>
+        <artifactId>kuali-common</artifactId>
+        <version>4.3.5</version>
+    </parent>
+    <groupId>org.kuali.kfs</groupId>
+    <artifactId>kfs-help</artifactId>
+    <version>ua-release1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <description>
+        The Kuali Financial System help module contains help files for the Kuali Financial application.
+    </description>
+    <url>http://${kuali.site.hostname}/kfs/${project.artifactId}/${project.version}</url>
+    <inceptionYear>2014</inceptionYear>
+    <scm>
+        <connection>scm:git:https://github.com/kuali/kfs-help.git</connection>
+        <developerConnection>scm:git:https://github.com/kuali/kfs-help.git</developerConnection>
+        <url>https://github.com/kuali/kfs-help/tree/${project.scm.tag}</url>
+        <tag>master</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>kfs.dev</id>
+            <name>Kuali Financial System Developers</name>
+            <organization>Kuali</organization>
+            <timezone>-7</timezone>
+            <email>kfs.tech.project@kuali.org</email>
+    	</developer>
+    </developers>
+   
+ 	<prerequisites>
+        <maven>${require.maven.version}</maven>
+    </prerequisites>
+
+    <properties>
+        <project.scm.vendor>git</project.scm.vendor>
+        <require.maven.version>3.0</require.maven.version>
+
+        <!-- UA properties -->
+        <dm.snapshotRepository.id>deployment</dm.snapshotRepository.id>
+        <dm.snapshotRepository.name>Internal Snapshots</dm.snapshotRepository.name>
+        <dm.snapshotRepository.url>https://ka-tools.mosaic.arizona.edu/nexus/content/repositories/snapshots/</dm.snapshotRepository.url>
+
+        <dm.repository.id>deployment</dm.repository.id>
+        <dm.repository.name>Internal Releases</dm.repository.name>
+        <dm.repository.url>https://ka-tools.mosaic.arizona.edu/nexus/content/repositories/releases/</dm.repository.url>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <version>1.0-m5.1</version>
+                <configuration>
+                    <pushFeatures>true</pushFeatures>
+                    <pushReleases>true</pushReleases>
+                    <pushHotfixes>true</pushHotfixes>
+                    <!-- Prevents deployments from dev workstations so that they can be done by CI server -->
+                    <noDeploy>true</noDeploy>
+                    <flowInitContext>
+                        <developBranchName>ua-development</developBranchName>
+                        <masterBranchName>ua-master</masterBranchName>
+                    </flowInitContext>
+                    <allowSnapshots>true</allowSnapshots>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+    <repository>
+        <id>${dm.repository.id}</id>
+        <name>${dm.repository.name}</name>
+        <url>${dm.repository.url}</url>
+    </repository>
+    <snapshotRepository>
+        <id>${dm.snapshotRepository.id}</id>
+        <name>${dm.snapshotRepository.name}</name>
+        <url>${dm.snapshotRepository.url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
